@@ -32,10 +32,24 @@ namespace WebAPI
         {
 
             services.AddControllers();
+
+            //Events Controller
             services.AddSingleton<IEventService, EventManager>();
             services.AddSingleton<IEventDal, EfEventDal>();
+
+            //Attendees Controller
             services.AddSingleton<IAttendeeService, AttendeeManager>();
             services.AddSingleton<IAttendeeDal, EfAttendeeDal>();
+
+            //Users Controller
+            services.AddSingleton<IUserService, UserManager>();
+            services.AddSingleton<IUserDal, EfUserDal>();
+
+            //Cars Controller
+            services.AddSingleton<ICarService, CarManager>();
+            services.AddSingleton<ICarDal, EfCarDal>();
+
+
 
 
             services.AddSwaggerGen(c =>
