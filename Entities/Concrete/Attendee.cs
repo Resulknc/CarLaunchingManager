@@ -8,7 +8,7 @@ namespace Entities.Concrete
     public class Attendee : IEntity
     {
         public int AttendeeId { get; set; }
-        public string AttendeName { get; set; }
+        public string AttendeeName { get; set; }
         public string AttendeeJob { get; set; }
         public string AttendeeNationality { get; set; }
     }

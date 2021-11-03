@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +32,12 @@ namespace WebAPI
         {
 
             services.AddControllers();
+            services.AddSingleton<IEventService, EventManager>();
+            services.AddSingleton<IEventDal, EfEventDal>();
+            services.AddSingleton<IAttendeeService, AttendeeManager>();
+            services.AddSingleton<IAttendeeDal, EfAttendeeDal>();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
