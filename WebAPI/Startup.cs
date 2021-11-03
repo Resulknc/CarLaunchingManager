@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
+using DataAccess.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,6 +51,9 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
 
+            //Country Controller
+            services.AddSingleton<ICountryService, CountryManager>();
+            services.AddSingleton<ICountryDal, EfCountryDal>();
 
 
 
