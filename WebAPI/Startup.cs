@@ -50,6 +50,12 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
 
+            services.AddSingleton<IDestinationService, DestinationManager>();
+            services.AddSingleton<IDestinationDal, EfDestinationDal>();
+
+            services.AddSingleton<IInviteeService, InviteeManager>();
+            services.AddSingleton<IInviteeDal, EfInviteeDal>();
+
 
 
 
