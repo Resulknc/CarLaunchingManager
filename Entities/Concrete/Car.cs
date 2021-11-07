@@ -10,5 +10,9 @@ namespace Entities.Concrete
         public int CarId { get; set; }
         public string CarName { get; set; }
         public string Year { get; set; }
+
+
+
+        public ICollection<Photo> Photos { get; set; }
     }
 }

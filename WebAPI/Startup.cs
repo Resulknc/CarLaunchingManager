@@ -1,5 +1,6 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.CloudinaryOperations;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddControllers();
             services.AddCors();
 
@@ -50,6 +53,8 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
 
+            //Cloudinary
+            services.AddScoped<IPhotoService, PhotoManager>();
 
 
 
