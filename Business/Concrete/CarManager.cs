@@ -9,9 +9,11 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         private readonly ICarDal _carDal;
-        public CarManager(ICarDal carDal )
+        private readonly IPhotoDal _photoDal;
+        public CarManager(ICarDal carDal, IPhotoDal photoDal )
         {
             _carDal = carDal;
+            _photoDal = photoDal;
 
         }
         public IResult Add(Car car)
@@ -34,6 +36,13 @@ namespace Business.Concrete
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(car => car.CarId == id));
+        }
+
+        public IDataResult<List<Photo>> GetPhotosByCarId(int id)
+        {
+            var carPhotos = _photoDal.GetAll(photo => photo.CarId == id);
+
+            return new SuccessDataResult<List<Photo>>(carPhotos);
         }
 
         public IResult Update(Car car)

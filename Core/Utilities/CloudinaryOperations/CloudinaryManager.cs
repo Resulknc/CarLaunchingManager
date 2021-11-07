@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.CloudinaryOperations
 {
-    public class PhotoManager : IPhotoService
+    public class CloudinaryManager : ICloudinaryService
     {
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private readonly Cloudinary _cloudinary;
        
 
-        public PhotoManager(IOptions<CloudinarySettings> cloudinaryConfig)
+        public CloudinaryManager(IOptions<CloudinarySettings> cloudinaryConfig)
         {
             _cloudinaryConfig = cloudinaryConfig;
 
@@ -46,9 +46,14 @@ namespace Core.Utilities.CloudinaryOperations
                 };
 
                 uploadedResult = _cloudinary.Upload(uploadedParams);
+
+                return new SuccessDataResult<ImageUploadResult>(uploadedResult);
             }
 
-            return new SuccessDataResult<ImageUploadResult>(uploadedResult);
+               return new ErrorDataResult<ImageUploadResult>(uploadedResult);
+           
+
+            
         }
     }
 }

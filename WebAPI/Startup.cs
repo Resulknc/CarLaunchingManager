@@ -53,8 +53,12 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
 
+            //Photo Controller
+            services.AddSingleton<IPhotoService, PhotoManager>();
+            services.AddSingleton<IPhotoDal,EfPhotoDal>();
+
             //Cloudinary
-            services.AddScoped<IPhotoService, PhotoManager>();
+            services.AddScoped<ICloudinaryService, CloudinaryManager>();
 
 
 

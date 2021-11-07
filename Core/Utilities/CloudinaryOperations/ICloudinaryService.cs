@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.CloudinaryOperations
 {
-    public interface IPhotoService
+    public interface ICloudinaryService
     {
        IDataResult<ImageUploadResult>  AddPhoto(IFormFile file);
     }
