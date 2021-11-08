@@ -43,7 +43,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             join inv in context.Intivees on e.EventId equals inv.EventId
+                             
                              select new EventDetailDto
                              {
                                  EventId = e.EventId,
