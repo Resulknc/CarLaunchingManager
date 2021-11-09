@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    class EfCountryDal : EfEntityRepositoryBase<Country,CarLaunchingManagerContext>,ICountryDal
+    public class EfCountryDal : EfEntityRepositoryBase<Country,CarLaunchingManagerContext>,ICountryDal
     {
     }
 

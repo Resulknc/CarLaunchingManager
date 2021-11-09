@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    interface ICountryDal:IEntityRepository<Country>
+    public interface ICountryDal:IEntityRepository<Country>
     {
     }
 }
