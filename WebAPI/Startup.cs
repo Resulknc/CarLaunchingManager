@@ -64,6 +64,10 @@ namespace WebAPI
             services.AddSingleton<ICountryService, CountryManager>();
             services.AddSingleton<ICountryDal, EfCountryDal>();
 
+            //Destination Controller
+            services.AddSingleton<IDestinationService, DestinationManager>();
+            services.AddSingleton<IDestinationDal, EfDestinationDal>();
+
             string a = "mergetest";
             services.AddSwaggerGen(c =>
             {
