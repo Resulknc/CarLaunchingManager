@@ -60,8 +60,11 @@ namespace WebAPI
             //Cloudinary
             services.AddScoped<ICloudinaryService, CloudinaryManager>();
 
+            //Country Controller
+            services.AddSingleton<ICountryService, CountryManager>();
+            services.AddSingleton<ICountryDal, EfCountryDal>();
 
-
+            string a = "mergetest";
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
