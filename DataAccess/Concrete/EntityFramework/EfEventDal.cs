@@ -25,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new EventDetailDto
                              {
                                  EventId = e.EventId,
+                                 CarId = ca.CarId,
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,
@@ -47,6 +48,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new EventDetailDto
                              {
                                  EventId = e.EventId,
+                                 CarId = ca.CarId,
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,

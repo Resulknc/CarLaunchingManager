@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/cars/{carId}/photos")]
+    [Route("api/photos")]
     [ApiController]
     public class PhotosController : ControllerBase
     {
@@ -25,13 +25,37 @@ namespace WebAPI.Controllers
             _photoService = photoService;
         }
 
-        [HttpPost("add")]
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _photoService.GetAll();
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getphotosbycarid")]
+        public IActionResult GetPhotosByCarId(int carId)
+        {
+            var result = _photoService.GetPhotosByCarId(carId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("add/{carId}")]
         public IActionResult AddPhoto(IFormFile file, int carId)
         {
             var currentCar = _carService.GetById(carId);
             var result = _cloudinaryService.AddPhoto(file);
 
-            currentCar.Data.Photos = _carService.GetPhotosByCarId(carId).Data;
+            currentCar.Data.Photos = _photoService.GetPhotosByCarId(carId).Data;
 
             if(result.Data.Error != null)
             {

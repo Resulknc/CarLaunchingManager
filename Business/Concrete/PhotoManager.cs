@@ -44,6 +44,11 @@ namespace Business.Concrete
             return new SuccessDataResult<Photo>(_photoDal.Get(photo => photo.PhotoId == id));
         }
 
+        public IDataResult<List<Photo>> GetPhotosByCarId(int carId)
+        {
+            return new SuccessDataResult<List<Photo>>(_photoDal.GetAll(photo=>photo.CarId==carId));
+        }
+
         public IResult Update(Photo photo)
         {
             _photoDal.Update(photo);

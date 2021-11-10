@@ -16,6 +16,8 @@ namespace Business.Abstract
         IResult Delete(Photo user);
         IResult Update(Photo user);
 
+        IDataResult<List<Photo>> GetPhotosByCarId(int carId);
+
 
     }
 }

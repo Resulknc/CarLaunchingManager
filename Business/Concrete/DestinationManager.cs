@@ -37,6 +37,16 @@ namespace Business.Concrete
             return new SuccessDataResult<Destination>(_destinationDal.Get(d => d.DestinationId == id));
         }
 
+        public IDataResult<List<Destination>> GetDestinationByCountry(Country country)
+        {
+            return new SuccessDataResult<List<Destination>>(_destinationDal.GetAll(destination => destination.CountryId == country.CountryId));
+        }
+
+        public IDataResult<List<Destination>> GetDestinationByCountryId(int id)
+        {
+            return new SuccessDataResult<List<Destination>>(_destinationDal.GetAll(destination => destination.CountryId==id));
+        }
+
         public IResult Update(Destination destination)
         {
             _destinationDal.Update(destination);

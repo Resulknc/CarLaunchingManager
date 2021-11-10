@@ -79,6 +79,19 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getbycountryname")]
+        public IActionResult GetByCountryName(string countryName)
+        {
+            var result = _countryService.GetCountryByName(countryName);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
 

@@ -77,5 +77,31 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+
+        [HttpGet("getdestinationbycountryid")]
+        public IActionResult GetByDestinationByCountryId(int countryId)
+        {
+            var result = _destinationService.GetDestinationByCountryId(countryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+        [HttpPost("getdestinationbycountry")]
+        public IActionResult GetByDestinationByCountry(Country country)
+        {
+            var result = _destinationService.GetDestinationByCountry(country);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+
     }
 }
