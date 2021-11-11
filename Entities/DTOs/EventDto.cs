@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.DTOs
 {
-    public class EventDetailDto:IDto
+    public class EventDto:IDto
     {
         public int EventId { get; set; }
         public DateTime Date { get; set; }

@@ -55,14 +55,14 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<List<EventDetailDto>> GetEventDto(int eventid)
+        public IDataResult<List<EventDto>> GetEventDto(int eventid)
         {
-            return new SuccessDataResult<List<EventDetailDto>>(_eventDal.GetEventDto(eventid));
+            return new SuccessDataResult<List<EventDto>>(_eventDal.GetEventDto(eventid));
         }
 
-        public IDataResult<List<EventDetailDto>> GetEventsDtos()
+        public IDataResult<List<EventDto>> GetEventsDtos()
         {
-            return new SuccessDataResult<List<EventDetailDto>>(_eventDal.GetEventsDtos());
+            return new SuccessDataResult<List<EventDto>>(_eventDal.GetEventsDtos());
         }
 
         public IResult Update(Event launch)

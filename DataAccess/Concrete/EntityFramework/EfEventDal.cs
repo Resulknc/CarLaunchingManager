@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfEventDal : EfEntityRepositoryBase<Event, CarLaunchingManagerContext>, IEventDal
     {
-        public List<EventDetailDto> GetEventDto(int eventId)
+        public List<EventDto> GetEventDto(int eventId)
         {
             using (CarLaunchingManagerContext context = new CarLaunchingManagerContext())
             {
@@ -20,9 +20,8 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             join inv in context.Intivees on e.EventId equals inv.EventId
                              where e.EventId == eventId
-                             select new EventDetailDto
+                             select new EventDto
                              {
                                  EventId = e.EventId,
                                  Date = e.Date,
@@ -35,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<EventDetailDto> GetEventsDtos()
+        public List<EventDto> GetEventsDtos()
         {
             using(CarLaunchingManagerContext context =new CarLaunchingManagerContext())
             {
@@ -43,8 +42,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             join inv in context.Intivees on e.EventId equals inv.EventId
-                             select new EventDetailDto
+                             select new EventDto
                              {
                                  EventId = e.EventId,
                                  Date = e.Date,

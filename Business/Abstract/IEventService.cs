@@ -14,8 +14,8 @@ namespace Business.Abstract
         IDataResult<List<Event>> GetByCarId(int id);
         IDataResult<List<Event>> GetByCountryId(int id);
         IDataResult<List<Event>> GetByDestinationId(int id);
-        IDataResult<List<EventDetailDto>> GetEventDto(int id);
-        IDataResult<List<EventDetailDto>> GetEventsDtos();
+        IDataResult<List<EventDto>> GetEventDto(int id);
+        IDataResult<List<EventDto>> GetEventsDtos();
         IResult Add(Event launch);
         IResult Delete(Event launch);
         IResult Update(Event launch);

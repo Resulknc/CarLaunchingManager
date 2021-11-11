@@ -9,7 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IEventDal:IEntityRepository<Event>
     {
-        List<EventDetailDto> GetEventsDtos();
-        List<EventDetailDto> GetEventDto(int eventId);
+        List<EventDto> GetEventsDtos();
+        List<EventDto> GetEventDto(int eventId);
     }
 }
