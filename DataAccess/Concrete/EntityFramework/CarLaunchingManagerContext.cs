@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -21,5 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Invitee> Intivees { get; set; }
+        public  DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }
