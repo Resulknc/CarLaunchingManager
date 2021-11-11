@@ -1,5 +1,6 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.CloudinaryOperations;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddControllers();
             services.AddCors();
 
@@ -50,9 +53,22 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
 
+            //Photo Controller
+            services.AddSingleton<IPhotoService, PhotoManager>();
+            services.AddSingleton<IPhotoDal,EfPhotoDal>();
 
+            //Cloudinary
+            services.AddScoped<ICloudinaryService, CloudinaryManager>();
 
+            //Country Controller
+            services.AddSingleton<ICountryService, CountryManager>();
+            services.AddSingleton<ICountryDal, EfCountryDal>();
 
+            //Destination Controller
+            services.AddSingleton<IDestinationService, DestinationManager>();
+            services.AddSingleton<IDestinationDal, EfDestinationDal>();
+
+            string a = "mergetest";
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

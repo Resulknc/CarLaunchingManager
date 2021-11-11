@@ -11,20 +11,55 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class InviteesController : ControllerBase
     {
-        private readonly ICarService _carService;
+        IInviteeService _inviteeService;
 
-        public CarsController(ICarService carService)
+        public InviteesController(IInviteeService inviteeService)
         {
-            _carService = carService;
+            _inviteeService = inviteeService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _inviteeService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
 
+        }
+
+        [HttpGet("getbyinviteeid")]
+        public IActionResult GetByInviteeId(int id)
+        {
+            var result = _inviteeService.GetByInviteeId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Invitee invitee)
+        {
+            var result = _inviteeService.Add(invitee);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Invitee invitee)
+        {
+            var result = _inviteeService.Delete(invitee);
             if (result.Success)
             {
                 return Ok(result);
@@ -32,59 +67,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getphotosbycarid")]
-        public IActionResult GetPhotosByCarId(int carId)
+        [HttpPost("update")]
+        public IActionResult Update(Invitee invitee)
         {
-            var result = _carService.GetPhotosByCarId(carId);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getbyid")]
-        public IActionResult Get(int id)
-        {
-            var result = _carService.GetById(id);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("add")]
-        public IActionResult Add(Car car)
-        {
-            var result = _carService.Add(car);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("delete")]
-        public IActionResult Delete(Car car)
-        {
-            var result = _carService.Delete(car);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("update")]
-        public IActionResult Update(Car car)
-        {
-            var result = _carService.Update(car);
-
+            var result = _inviteeService.Update(invitee);
             if (result.Success)
             {
                 return Ok(result);

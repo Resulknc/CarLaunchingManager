@@ -21,5 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Invitee> Intivees { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
     }
 }

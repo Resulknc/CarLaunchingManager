@@ -24,6 +24,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new EventDto
                              {
                                  EventId = e.EventId,
+                             
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,
@@ -42,9 +43,11 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             select new EventDto
+                        
+                             select new EventDetailDto
                              {
                                  EventId = e.EventId,
+                                 CarId = ca.CarId,
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,

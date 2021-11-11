@@ -1,41 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Business.Abstract;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Business.Abstract;
-using Entities.Concrete;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class CountriesController : ControllerBase
     {
-        private readonly ICarService _carService;
+        private readonly ICountryService _countryService;
 
-        public CarsController(ICarService carService)
+        public CountriesController(ICountryService countryService)
         {
-            _carService = carService;
+            _countryService = countryService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getphotosbycarid")]
-        public IActionResult GetPhotosByCarId(int carId)
-        {
-            var result = _carService.GetPhotosByCarId(carId);
+            var result = _countryService.GetAll();
 
             if (result.Success)
             {
@@ -47,7 +35,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult Get(int id)
         {
-            var result = _carService.GetById(id);
+            var result = _countryService.GetById(id);
 
             if (result.Success)
             {
@@ -57,9 +45,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Country country)
         {
-            var result = _carService.Add(car);
+            var result = _countryService.Add(country);
 
             if (result.Success)
             {
@@ -69,9 +57,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Country country)
         {
-            var result = _carService.Delete(car);
+            var result = _countryService.Delete(country);
 
             if (result.Success)
             {
@@ -81,9 +69,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Country country)
         {
-            var result = _carService.Update(car);
+            var result = _countryService.Update(country);
 
             if (result.Success)
             {
@@ -91,5 +79,19 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getbycountryname")]
+        public IActionResult GetByCountryName(string countryName)
+        {
+            var result = _countryService.GetCountryByName(countryName);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
+

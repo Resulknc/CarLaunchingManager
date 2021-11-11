@@ -13,5 +13,8 @@ namespace Business.Abstract
         IResult Add(Destination destination);
         IResult Delete(Destination destination);
         IResult Update(Destination destination);
+
+        IDataResult<List<Destination>> GetDestinationByCountryId(int id);
+        IDataResult<List<Destination>> GetDestinationByCountry(Country country);
     }
 }
