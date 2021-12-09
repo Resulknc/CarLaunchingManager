@@ -45,6 +45,13 @@ namespace Business.Concrete
             return new SuccessDataResult<Country>(_countryDal.Get(country => country.CountryName.ToLower() == countryName.ToLower()));
         }
 
+        public IDataResult<int> GetCountryIdByName(Country country)
+        {
+            var c = _countryDal.Get(country => country.CountryId==country.CountryId);
+
+            return new SuccessDataResult<int>(c.CountryId);
+        }
+
         public IResult Update(Country country)
         {
             _countryDal.Update(country);
