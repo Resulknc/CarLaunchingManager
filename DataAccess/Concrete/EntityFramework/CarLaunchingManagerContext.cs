@@ -23,5 +23,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Invitee> Intivees { get; set; }
 
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<AttendeePhoto> AttendeePhotos { get; set; }
     }
 }

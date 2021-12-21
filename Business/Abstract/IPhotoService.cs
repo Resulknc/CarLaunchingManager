@@ -12,9 +12,9 @@ namespace Business.Abstract
     {
         IDataResult<List<Photo>> GetAll();
         IDataResult<Photo> GetById(int id);
-        IResult Add(Photo user);
-        IResult Delete(Photo user);
-        IResult Update(Photo user);
+        IResult Add(Photo photo);
+        IResult Delete(Photo photo);
+        IResult Update(Photo photo);
 
         IDataResult<List<Photo>> GetPhotosByCarId(int carId);
 

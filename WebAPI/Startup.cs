@@ -57,6 +57,9 @@ namespace WebAPI
             services.AddSingleton<IPhotoService, PhotoManager>();
             services.AddSingleton<IPhotoDal,EfPhotoDal>();
 
+            //Attendee Photo Controller
+            services.AddSingleton<IAttendeePhotoService, AttendeePhotoManager>();
+            services.AddSingleton<IAttendeePhotoDal, EfAttendeePhotoDal>();
             //Cloudinary
             services.AddScoped<ICloudinaryService, CloudinaryManager>();
 
@@ -86,6 +89,7 @@ namespace WebAPI
             }
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4401").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

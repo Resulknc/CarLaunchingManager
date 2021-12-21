@@ -17,6 +17,9 @@ namespace Business.Abstract
         IResult Update(Country country);
 
         IDataResult<Country> GetCountryByName(string countryName);
+        IDataResult<int> GetCountryIdByName(Country country);
+
+
 
     }
 }
