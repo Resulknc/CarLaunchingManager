@@ -102,6 +102,30 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpPost("deletebydestinationname")]
+        public IActionResult DeleteCountryByName(string destinationName)
+        {
+
+            var result = _destinationService.DeleteByDestinationName(destinationName);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycountryname")]
+        public IActionResult GetByUsername(string destinationName)
+        {
+            var result = _destinationService.GetByDestinationName(destinationName);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
     }
 }

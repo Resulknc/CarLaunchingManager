@@ -19,6 +19,11 @@ namespace Business.Abstract
         IDataResult<Country> GetCountryByName(string countryName);
         IDataResult<int> GetCountryIdByName(Country country);
 
+        IResult DeleteByCountryName(string countryName);
+
+        IDataResult<Country> GetByCountryName(string countryName);
+
+
 
 
     }
