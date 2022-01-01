@@ -11,7 +11,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CarLaunching;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CarLaunchingManager;Trusted_Connection=true");
 
         }
 
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Invitee> Intivees { get; set; }
-
-        public DbSet<Photo> Photos { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }

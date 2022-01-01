@@ -12,6 +12,7 @@ namespace Business.Abstract
 
         IDataResult<List<User>> GetAll();
         IDataResult<User> GetByEmail(string Email);
+        IDataResult<User> GetById(int Id);
         IResult Add(User user);
         IResult Update(User user);
         IResult Delete(User user);
