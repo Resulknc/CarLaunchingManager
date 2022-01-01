@@ -71,7 +71,7 @@ namespace WebAPI
             services.AddSingleton<IDestinationService, DestinationManager>();
             services.AddSingleton<IDestinationDal, EfDestinationDal>();
 
-            string a = "mergetest";
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

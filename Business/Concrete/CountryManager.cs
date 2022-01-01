@@ -30,11 +30,23 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult DeleteByCountryName(string countryName)
+        {
+            var deletedCountry = _countryDal.Get(country => country.CountryName == countryName);
+            _countryDal.Delete(deletedCountry);
+            return new SuccessResult();
+        }
+
         public IDataResult<List<Country>> GetAll()
         {
             return new SuccessDataResult<List<Country>>(_countryDal.GetAll());
         }
-         
+
+        public IDataResult<Country> GetByCountryName(string countryName)
+        {
+            return new SuccessDataResult<Country>(_countryDal.Get(country => country.CountryName==countryName));
+        }
+
         public IDataResult<Country> GetById(int id)
         {
             return new SuccessDataResult<Country>(_countryDal.Get(country => country.CountryId == id));

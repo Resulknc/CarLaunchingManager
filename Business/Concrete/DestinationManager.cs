@@ -27,6 +27,15 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult DeleteByDestinationName(string destinationName)
+        {
+            var deletedDestination = _destinationDal.Get(dest => dest.DestinationName == destinationName);
+
+            _destinationDal.Delete(deletedDestination);
+
+            return new SuccessResult();
+        }
+
         public IDataResult<List<Destination>> GetAll()
         {
             return new SuccessDataResult<List<Destination>>(_destinationDal.GetAll());
@@ -35,6 +44,11 @@ namespace Business.Concrete
         public IDataResult<Destination> GetByDestinationId(int id)
         {
             return new SuccessDataResult<Destination>(_destinationDal.Get(d => d.DestinationId == id));
+        }
+
+        public IDataResult<Destination> GetByDestinationName(string destinationName)
+        {
+            return new SuccessDataResult<Destination>(_destinationDal.Get(dest => dest.DestinationName == destinationName));
         }
 
         public IDataResult<List<Destination>> GetDestinationByCountry(Country country)

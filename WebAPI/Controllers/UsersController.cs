@@ -81,5 +81,27 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("deletebyname")]
+        public IActionResult DeleteByUsername(String username)
+        {
+            var result = _userService.DeleteByUsername(username);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getbyusername")]
+        public IActionResult GetByUsername(String username)
+        {
+            var result = _userService.GetByUsername(username);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

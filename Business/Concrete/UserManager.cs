@@ -29,6 +29,14 @@ namespace Business.Concrete
 
         }
 
+        public IResult DeleteByUsername(string username)
+        {
+            var user = _userDal.Get(user => user.UserName == username);
+            _userDal.Delete(user);
+
+            return new SuccessResult();
+        }
+
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
@@ -38,6 +46,11 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<User>(_userDal.Get(user => user.UserId == id));
 
+        }
+
+        public IDataResult<User> GetByUsername(string username)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(user => user.UserName == username));
         }
 
         public IResult Update(User user)

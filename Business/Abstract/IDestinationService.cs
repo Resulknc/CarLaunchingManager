@@ -16,5 +16,9 @@ namespace Business.Abstract
 
         IDataResult<List<Destination>> GetDestinationByCountryId(int id);
         IDataResult<List<Destination>> GetDestinationByCountry(Country country);
+
+        IResult DeleteByDestinationName(string destinationName);
+
+        IDataResult<Destination> GetByDestinationName(string destinationName);
     }
 }
