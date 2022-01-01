@@ -3,6 +3,7 @@ using Core.Utilities.Results;
 using Entities.Concrete;
 using System.Collections.Generic;
 using DataAccess.Abstract;
+using Core.Entities.Concrete;
 
 namespace Business.Concrete
 {
@@ -14,12 +15,20 @@ namespace Business.Concrete
             _userDal = userDal;
 
         }
+
+        public IDataResult<User> GetById(int Id)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == Id));
+        }
+
         public IResult Add(User user)
         {
             _userDal.Add(user);
 
             return new SuccessResult();
         }
+
+     
 
         public IResult Delete(User user)
         {
@@ -42,10 +51,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-        public IDataResult<User> GetById(int id)
+        public IDataResult<User> GetByEmail(string Email)
         {
-            return new SuccessDataResult<User>(_userDal.Get(user => user.UserId == id));
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == Email));
+        }
 
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
         }
 
         public IDataResult<User> GetByUsername(string username)
@@ -59,5 +72,6 @@ namespace Business.Concrete
 
             return new SuccessResult();
         }
+
     }
 }
