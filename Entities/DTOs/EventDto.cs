@@ -13,6 +13,7 @@ namespace Entities.DTOs
         public string DestinationName { get; set; }
         public string CountryName { get; set; }
         public string CarName { get; set; }
+        public double AvaragePoint { get; set; }
 
     }
 }

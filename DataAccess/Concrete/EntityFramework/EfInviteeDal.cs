@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (CarLaunchingManagerContext context = new CarLaunchingManagerContext())
             {
-                var result = from invitee in context.Intivees
+                var result = from invitee in context.Invitees
                              join att in context.Attendees on invitee.AttendeeId equals att.AttendeeId
                              where invitee.EventId == eventId
                              select new InviteesDto

@@ -54,6 +54,10 @@ namespace Business.Concrete
 
         }
 
+        public IDataResult<List<EventDto>> GetEventsOfAttendee(int attendeId)
+        {
+            return new SuccessDataResult<List<EventDto>>(_eventDal.GetEventOfAttendee(attendeId));
+        }
 
         public IDataResult<List<EventDto>> GetEventDto(int eventid)
         {

@@ -16,6 +16,7 @@ namespace Business.Abstract
         IDataResult<List<Event>> GetByDestinationId(int id);
         IDataResult<List<EventDto>> GetEventDto(int id);
         IDataResult<List<EventDto>> GetEventsDtos();
+        IDataResult<List<EventDto>> GetEventsOfAttendee(int attendeId);
         IResult Add(Event launch);
         IResult Delete(Event launch);
         IResult Update(Event launch);

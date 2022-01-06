@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     {
         List<EventDto> GetEventsDtos();
         List<EventDto> GetEventDto(int eventId);
+        List<EventDto> GetEventOfAttendee(int attendeId);
     }
 }

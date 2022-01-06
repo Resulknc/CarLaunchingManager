@@ -42,6 +42,18 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpGet("geteventsofattendee")]
+        public IActionResult GetEventsOfAttendee(int attendeeid)
+        {
+            var result = _eventService.GetEventsOfAttendee(attendeeid);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
 
         [HttpGet("getbycarid")]
         public IActionResult GetByCarId(int id)

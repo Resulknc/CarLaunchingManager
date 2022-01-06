@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entities;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -36,11 +37,17 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Attendee>(_attendeeDal.Get(p => p.AttendeeId == id));
         }
-
+        public IDataResult<Attendee> GetByEmail(string Email)
+        {
+            return new SuccessDataResult<Attendee>(_attendeeDal.Get(p => p.AttendeeEmail == Email));
+        }
         public IResult Update(Attendee attendee)
         {
             _attendeeDal.Update(attendee);
             return new SuccessResult();
         }
+
+        
+
     }
 }

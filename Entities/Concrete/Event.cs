@@ -12,5 +12,6 @@ namespace Entities.Concrete
         public int DestinationId { get; set; }
         public int CountryId { get; set; }
         public DateTime Date { get; set; }
+        public double Rating { get; set; }
     }
 }

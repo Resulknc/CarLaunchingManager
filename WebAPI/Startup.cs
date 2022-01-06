@@ -41,37 +41,37 @@ namespace WebAPI
             services.AddControllers();
             services.AddCors();
 
-            //Events Controller
-            services.AddSingleton<IEventService, EventManager>();
-            services.AddSingleton<IEventDal, EfEventDal>();
+            ////Events Controller
+            //services.AddSingleton<IEventService, EventManager>();
+            //services.AddSingleton<IEventDal, EfEventDal>();
 
-            //Attendees Controller
-            services.AddSingleton<IAttendeeService, AttendeeManager>();
-            services.AddSingleton<IAttendeeDal, EfAttendeeDal>();
+            ////Attendees Controller
+            //services.AddSingleton<IAttendeeService, AttendeeManager>();
+            //services.AddSingleton<IAttendeeDal, EfAttendeeDal>();
 
-            //Users Controller
-            services.AddSingleton<IUserService, UserManager>();
-            services.AddSingleton<IUserDal, EfUserDal>();
+            ////Users Controller
+            //services.AddSingleton<IUserService, UserManager>();
+            //services.AddSingleton<IUserDal, EfUserDal>();
 
-            //Cars Controller
-            services.AddSingleton<ICarService, CarManager>();
-            services.AddSingleton<ICarDal, EfCarDal>();
+            ////Cars Controller
+            //services.AddSingleton<ICarService, CarManager>();
+            //services.AddSingleton<ICarDal, EfCarDal>();
 
-            //Photo Controller
-            services.AddSingleton<IPhotoService, PhotoManager>();
-            services.AddSingleton<IPhotoDal,EfPhotoDal>();
+            ////Photo Controller
+            //services.AddSingleton<IPhotoService, PhotoManager>();
+            //services.AddSingleton<IPhotoDal,EfPhotoDal>();
 
-            //Attendee Photo Controller
-            services.AddSingleton<IAttendeePhotoService, AttendeePhotoManager>();
-            services.AddSingleton<IAttendeePhotoDal, EfAttendeePhotoDal>();
-            //Cloudinary
-            services.AddScoped<ICloudinaryService, CloudinaryManager>();
+            ////Attendee Photo Controller
+            //services.AddSingleton<IAttendeePhotoService, AttendeePhotoManager>();
+            //services.AddSingleton<IAttendeePhotoDal, EfAttendeePhotoDal>();
+            ////Cloudinary
+            //services.AddScoped<ICloudinaryService, CloudinaryManager>();
 
-            services.AddSingleton<IUserService, UserManager>();
-            services.AddSingleton<IUserDal, EfUserDal>();
+            //services.AddSingleton<IUserService, UserManager>();
+            //services.AddSingleton<IUserDal, EfUserDal>();
 
-            services.AddSingleton<IAuthService, AuthManager>();
-            services.AddSingleton<ITokenHelper, JwtHelper>();
+            //services.AddSingleton<IAuthService, AuthManager>();
+            //services.AddSingleton<ITokenHelper, JwtHelper>();
 
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
@@ -91,9 +91,9 @@ namespace WebAPI
                     };
                 });
 
-            //Destination Controller
-            services.AddSingleton<IDestinationService, DestinationManager>();
-            services.AddSingleton<IDestinationDal, EfDestinationDal>();
+            ////Destination Controller
+            //services.AddSingleton<IDestinationService, DestinationManager>();
+            //services.AddSingleton<IDestinationDal, EfDestinationDal>();
 
             
             services.AddSwaggerGen(c =>
@@ -118,6 +118,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

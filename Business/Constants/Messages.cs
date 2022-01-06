@@ -35,5 +35,6 @@ namespace Business.Constants
         public static string ImageDeleted = "Fotoğraf silindi.";
 
         public static string ImageUpdated = "Fotoğraf güncellendi.";
+        internal static string AttendeeRegistered="Katılımcı eklendi.";
     }
 }
