@@ -26,17 +26,20 @@ namespace Business.Concrete
         {
             feedback = CalculateAverage(feedback).Data;
             _feedbackDal.Add(feedback);
+
             List<Feedback> feedbacks = _feedbackDal.GetAll(f => f.EventId == feedback.EventId);
-            double average=0;
+
+            double average = 0;
+
             foreach (var feed in feedbacks)
             {
                 average += feed.AvaragePoint;
             }
             average = average / feedbacks.Count;
-            
-            UpdateEventRating(feedback,average);
-            
-            
+
+            UpdateEventRating(feedback, average);
+
+
 
             return new SuccessResult();
 
@@ -47,9 +50,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Feedback>>(_feedbackDal.GetAll());
         }
 
-        public IDataResult<Feedback> GetAllByEventId(int eventId)
+        public IDataResult<List<Feedback>> GetAllByEventId(int eventId)
         {
-            return new SuccessDataResult<Feedback>(_feedbackDal.Get(p => p.EventId == eventId));
+            return new SuccessDataResult<List<Feedback>>(_feedbackDal.GetAll(p => p.EventId == eventId));
         }
 
         public IResult Update(Feedback feedback)
@@ -64,9 +67,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult UpdateEventRating(Feedback feedback,double average)
+        private IResult UpdateEventRating(Feedback feedback, double average)
         {
-            Event selectedEvent = _eventService.GetByEventId(feedback.EventId).Data;            
+            Event selectedEvent = _eventService.GetByEventId(feedback.EventId).Data;
             selectedEvent.Rating = average;
             _eventService.Update(selectedEvent);
 
