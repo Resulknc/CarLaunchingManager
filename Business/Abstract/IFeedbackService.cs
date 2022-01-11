@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         IResult Add(Feedback point);
         IResult Update(Feedback point);
-        IDataResult<Feedback> GetAllByEventId(int eventId);
+        IDataResult<List<Feedback>> GetAllByEventId(int eventId);
         IDataResult<List<Feedback>> GetAll();
 
     }

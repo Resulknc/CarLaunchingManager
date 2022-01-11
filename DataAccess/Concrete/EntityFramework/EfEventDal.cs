@@ -20,16 +20,17 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             join po in context.Feedback on e.EventId equals po.EventId
+                             //join po in context.Feedback on e.EventId equals po.EventId
                              where e.EventId == eventId
                              select new EventDto
                              {
                                  EventId = e.EventId,
+                                 CarId=ca.CarId,
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,
                                  CarName = ca.CarName,
-                                 AvaragePoint=po.AvaragePoint
+                                 Rating=e.Rating
                              };
                 return result.ToList();
 
@@ -65,15 +66,16 @@ namespace DataAccess.Concrete.EntityFramework
                              join co in context.Countries on e.CountryId equals co.CountryId
                              join de in context.Destinations on e.DestinationId equals de.DestinationId
                              join ca in context.Cars on e.CarId equals ca.CarId
-                             join po in context.Feedback on e.EventId equals po.EventId
+                             //join po in context.Feedback on e.EventId equals po.EventId
                              select new EventDto
                              {
                                  EventId = e.EventId,
+                                 CarId = ca.CarId,
                                  Date = e.Date,
                                  DestinationName = de.DestinationName,
                                  CountryName = co.CountryName,
                                  CarName = ca.CarName,
-                                 AvaragePoint = po.AvaragePoint
+                                 Rating = e.Rating
                              };
                 return result.ToList();
 
