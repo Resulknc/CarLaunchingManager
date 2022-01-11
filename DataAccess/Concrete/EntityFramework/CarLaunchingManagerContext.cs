@@ -20,7 +20,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Country> Countries { get; set; }
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<Invitee> Intivees { get; set; }
+        public DbSet<Invitee> Invitees { get; set; }
 
         public DbSet<Photo> Photos { get; set; }
         public DbSet<AttendeePhoto> AttendeePhotos { get; set; }

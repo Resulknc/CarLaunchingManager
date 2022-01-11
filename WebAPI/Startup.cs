@@ -41,6 +41,9 @@ namespace WebAPI
             services.AddSingleton<IEventService, EventManager>();
             services.AddSingleton<IEventDal, EfEventDal>();
 
+            //Invitees Controler
+            services.AddSingleton<IInviteeService, InviteeManager>();
+            services.AddSingleton<IInviteeDal, EfInviteeDal>();
             //Attendees Controller
             services.AddSingleton<IAttendeeService, AttendeeManager>();
             services.AddSingleton<IAttendeeDal, EfAttendeeDal>();

@@ -32,6 +32,18 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet("getinviteesbyeventid")]
+        public IActionResult GetInviteesByEventId(int eventId)
+        {
+            var result = _inviteeService.GetInviteesByEventId(eventId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
         [HttpGet("getbyinviteeid")]
         public IActionResult GetByInviteeId(int id)
         {
@@ -60,6 +72,17 @@ namespace WebAPI.Controllers
         public IActionResult Delete(Invitee invitee)
         {
             var result = _inviteeService.Delete(invitee);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        
+        [HttpPost("deletebyeventandattendeeid")]
+         public IActionResult DeleteByEventAndAttendeeId(int eventId,int attendeeId)
+        {
+            var result = _inviteeService.DeleteByEventAndAttenedeeId(eventId,attendeeId);
             if (result.Success)
             {
                 return Ok(result);
