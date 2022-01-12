@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
@@ -16,6 +17,7 @@ namespace Business.Concrete
         {
             _attendeeDal = attendeeDal;
         }
+        
         public IResult Add(Attendee attendee)
         {
             _attendeeDal.Add(attendee);
