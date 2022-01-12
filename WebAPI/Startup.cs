@@ -20,6 +20,7 @@ using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Core.Utilities.Mailkit;
 
 namespace WebAPI
 {
@@ -37,6 +38,7 @@ namespace WebAPI
         {
 
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+            services.Configure<MailkitSettings>(Configuration.GetSection("MailkitSettings"));
 
             services.AddControllers();
             services.AddCors();
@@ -72,6 +74,8 @@ namespace WebAPI
 
             //services.AddSingleton<IAuthService, AuthManager>();
             //services.AddSingleton<ITokenHelper, JwtHelper>();
+
+
 
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();

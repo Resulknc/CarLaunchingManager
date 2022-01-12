@@ -2,6 +2,7 @@
 using Business.Abstract;
 using Business.Concrete;
 using Core.Utilities.CloudinaryOperations;
+using Core.Utilities.Mailkit;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -61,6 +62,11 @@ namespace Business.DependencyResolvers.Autofac
 
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+
+            builder.RegisterType<MailkitManager>().As<IMailkitService>().SingleInstance();
+            builder.RegisterType<MailManager>().As<IMailService>().SingleInstance();
+
+        
         }
     }
 }
