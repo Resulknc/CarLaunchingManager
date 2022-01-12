@@ -63,7 +63,7 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 
-            builder.RegisterType<MailkitManager>().As<IMailkitService>().SingleInstance();
+            //builder.RegisterType<MailkitManager>().As<IMailkitService>().SingleInstance();
             builder.RegisterType<MailManager>().As<IMailService>().SingleInstance();
 
         
