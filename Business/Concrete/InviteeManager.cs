@@ -28,6 +28,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult DeleteByEventAndAttenedeeId(int eventId, int attendeeId)
+        {
+            var deletedEntity = _inviteeDal.Get(x => x.EventId == eventId && x.AttendeeId == attendeeId);
+            _inviteeDal.Delete(deletedEntity);
+            return new SuccessResult();
+        }
+
         public IDataResult<List<Invitee>> GetAll()
         {
             return new SuccessDataResult<List<Invitee>>(_inviteeDal.GetAll());
@@ -36,6 +43,11 @@ namespace Business.Concrete
         public IDataResult<Invitee> GetByInviteeId(int id)
         {
             return new SuccessDataResult<Invitee>(_inviteeDal.Get(i => i.InviteeId == id));
+        }
+
+        public IDataResult<List<Invitee>> GetInviteesByEventId(int eventId)
+        {
+            return new SuccessDataResult<List<Invitee>>(_inviteeDal.GetAll(i => i.EventId == eventId));
         }
 
         public IResult Update(Invitee invitee)

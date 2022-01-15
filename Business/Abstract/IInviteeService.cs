@@ -13,5 +13,8 @@ namespace Business.Abstract
         IResult Add(Invitee invitee);
         IResult Delete(Invitee invitee);
         IResult Update(Invitee invitee);
+
+        IResult DeleteByEventAndAttenedeeId(int eventId, int attendeeId);
+        IDataResult<List<Invitee>> GetInviteesByEventId(int eventId);
     }
 }
