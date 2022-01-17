@@ -40,8 +40,9 @@ namespace WebAPI
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.Configure<MailkitSettings>(Configuration.GetSection("MailkitSettings"));
 
-            services.AddControllers();
             services.AddCors();
+            services.AddControllers();
+           
 
             ////Events Controller
             //services.AddSingleton<IEventService, EventManager>();
@@ -116,8 +117,9 @@ namespace WebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4401").AllowAnyHeader());
+            //app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+            //app.UseCors(builder => builder.WithOrigins("http://localhost:4401").AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials());
 
             app.UseHttpsRedirection();
 

@@ -36,6 +36,9 @@ namespace Business.DependencyResolvers.Autofac
             //Users Controller
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+            //Invitee Controller
+            builder.RegisterType<InviteeManager>().As<IInviteeService>().SingleInstance();
+            builder.RegisterType<EfInviteeDal>().As<IInviteeDal>().SingleInstance();
 
 
             //Cars Controller

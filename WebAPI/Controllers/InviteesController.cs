@@ -77,5 +77,28 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpPost("deletebyeventandattendeeid")]
+        public IActionResult DeleteByEventAndAttendeeId(int eventId, int attendeeId)
+        {
+            var result = _inviteeService.DeleteByEventAndAttenedeeId(eventId, attendeeId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getinviteesbyeventid")]
+        public IActionResult GetInviteesByEventId(int eventId)
+        {
+            var result = _inviteeService.GetInviteesByEventId(eventId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
     }
 }
