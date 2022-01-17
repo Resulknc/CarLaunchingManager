@@ -49,6 +49,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfAttendeePhotoDal>().As<IAttendeePhotoDal>().SingleInstance();
             builder.RegisterType<AttendeePhotoManager>().As<IAttendeePhotoService>().SingleInstance();
 
+            //Invitee Controller
+            builder.RegisterType<EfInviteeDal>().As<IInviteeDal>().SingleInstance();
+            builder.RegisterType<InviteeManager>().As<IInviteeService>().SingleInstance();
+
             //Cloudinary
             builder.RegisterType<CloudinaryManager>().As<ICloudinaryService>().SingleInstance();
             
