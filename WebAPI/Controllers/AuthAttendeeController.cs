@@ -14,9 +14,12 @@ namespace WebAPI.Controllers
     public class AuthAttendeeController : Controller
     {
         IAuthAttendeeService _authAttendeeService;
-        public AuthAttendeeController(IAuthAttendeeService authAttendeeService)
+        private readonly IMailService _mailService;
+
+        public AuthAttendeeController(IAuthAttendeeService authAttendeeService, IMailService mailService)
         {
             _authAttendeeService = authAttendeeService;
+            _mailService = mailService;
         }
 
         [HttpPost("login")]
@@ -53,9 +56,15 @@ namespace WebAPI.Controllers
             if (result.Success)
             {
                 return Ok(result.Message);
+
             }
 
             return BadRequest(result.Message);
+        }
+
+        private void SendEmail(AttendeeForEmailDto attendee)
+        {
+            _mailService.Send(attendee.Email, attendee.AttendeeName);
         }
     }
 }
