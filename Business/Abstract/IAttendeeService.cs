@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using Entities;
 using Entities.Concrete;
 using System;
@@ -15,5 +16,7 @@ namespace Business.Abstract
         IResult Add(Attendee attendee);
         IResult Delete(Attendee attendee);
         IResult Update(Attendee attendee);
+        IDataResult<List<OperationClaim>> GetClaims(Attendee attendee);
+
     }
 }

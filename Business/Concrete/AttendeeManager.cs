@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
@@ -38,6 +39,10 @@ namespace Business.Concrete
         public IDataResult<Attendee> GetByAttendeeId(int id)
         {
             return new SuccessDataResult<Attendee>(_attendeeDal.Get(p => p.AttendeeId == id));
+        }
+        public IDataResult<List<OperationClaim>> GetClaims(Attendee attendee)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_attendeeDal.GetClaims(attendee));
         }
         public IDataResult<Attendee> GetByEmail(string Email)
         {

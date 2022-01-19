@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.Utilities.Security.JWT;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
@@ -16,9 +17,9 @@ namespace Business.Concrete
     public class AuthAttendeeManager : IAuthAttendeeService
     {
         private IAttendeeService _attendeeService;
-        private ITokenHelper _tokenHelper;
+        private ITokenHelperAttendee _tokenHelper;
 
-        public AuthAttendeeManager(IAttendeeService attendeeService,ITokenHelper tokenHelper)
+        public AuthAttendeeManager(IAttendeeService attendeeService,ITokenHelperAttendee tokenHelper)
         {
             _attendeeService = attendeeService;
             _tokenHelper = tokenHelper;
@@ -71,7 +72,9 @@ namespace Business.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(Attendee attendee)
         {
-            throw new NotImplementedException();
+            var claims = _attendeeService.GetClaims(attendee).Data;
+            var accessToken = _tokenHelper.CreateToken(attendee, claims);
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
     }
 }

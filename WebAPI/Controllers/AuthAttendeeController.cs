@@ -26,17 +26,17 @@ namespace WebAPI.Controllers
         public ActionResult Login(AttendeeForLoginDto attendeeForLoginDto)
         {
             var attendeeToLogin = _authAttendeeService.Login(attendeeForLoginDto);
-            if (attendeeToLogin.Success)
+            if (!attendeeToLogin.Success)
             {
-                //return BadRequest(attendeeToLogin.Message);
-                return Ok(attendeeToLogin.Message);
+                return BadRequest(attendeeToLogin.Message);
+                //return Ok(attendeeToLogin.Message);
 
             }
-            //var result = _authAttendeeService.CreateAccessToken(userToLogin.Data);
-            //if (result.Success)
-            //{
-            //    return Ok(result.Data);
-            //}
+            var result = _authAttendeeService.CreateAccessToken(attendeeToLogin.Data);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
 
             return BadRequest(attendeeToLogin.Message);
         }

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Business.Abstract;
 using Business.Concrete;
+using Business.Utilities.Security.JWT;
 using Core.Utilities.CloudinaryOperations;
 using Core.Utilities.Mailkit;
 using Core.Utilities.Security.JWT;
@@ -69,6 +70,7 @@ namespace Business.DependencyResolvers.Autofac
 
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+            builder.RegisterType<JwtHelperAttendee>().As<ITokenHelperAttendee>().SingleInstance();
 
             //builder.RegisterType<MailkitManager>().As<IMailkitService>().SingleInstance();
             builder.RegisterType<MailManager>().As<IMailService>().SingleInstance();
