@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,6 +85,10 @@ namespace Business.Concrete
             return new SuccessDataResult<Feedback>(feedback);
         }
 
+        public IDataResult<List<FeedbackDto>> GetFeedbackDtos()
+        {
+            return new SuccessDataResult<List<FeedbackDto>>(_feedbackDal.GetFeedbackDtos());
+        }
     }
 
 }
