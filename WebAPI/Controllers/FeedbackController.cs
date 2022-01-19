@@ -66,7 +66,19 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        
+
+        [HttpGet("getfeedbackdtos")]
+        public IActionResult GetFeedbackDtos()
+        {
+            var result = _feedbackService.GetFeedbackDtos();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
 
     }
 }

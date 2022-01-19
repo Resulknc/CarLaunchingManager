@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Business.Abstract
         IResult Update(Feedback point);
         IDataResult<List<Feedback>> GetAllByEventId(int eventId);
         IDataResult<List<Feedback>> GetAll();
+
+        IDataResult<List<FeedbackDto>> GetFeedbackDtos();
 
     }
 }
