@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             var result = _authAttendeeService.CreateAccessToken(attendeeToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(attendeeToLogin.Message);

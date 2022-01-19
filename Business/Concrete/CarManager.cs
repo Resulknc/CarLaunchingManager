@@ -38,6 +38,11 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(car => car.CarId == id));
         }
 
+        public IDataResult<Car> GetCarByModel(string model)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(car=>car.CarName==model));
+        }
+
         public IDataResult<List<Photo>> GetPhotosByCarId(int id)
         {
             var carPhotos = _photoDal.GetAll(photo => photo.CarId == id);
