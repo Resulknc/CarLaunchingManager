@@ -55,11 +55,11 @@ namespace WebAPI.Controllers
             //var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
 
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         private void SendEmail(AttendeeForEmailDto attendee)
