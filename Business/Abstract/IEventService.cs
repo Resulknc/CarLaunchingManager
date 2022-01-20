@@ -17,7 +17,7 @@ namespace Business.Abstract
         IDataResult<List<EventDto>> GetEventDto(int id);
         IDataResult<List<EventDto>> GetEventsDtos();
         IDataResult<List<EventDto>> GetEventsOfAttendee(int attendeId);
-        IResult Add(Event launch);
+        IResult Add(EventDetail launch);
         IResult Delete(Event launch);
         IResult Update(Event launch);
     }

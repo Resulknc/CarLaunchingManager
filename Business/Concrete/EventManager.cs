@@ -12,13 +12,19 @@ namespace Business.Concrete
     public class EventManager : IEventService
     {
         IEventDal _eventDal;
-        public EventManager(IEventDal eventDal)
+        ICountryService _countryService;
+        IDestinationService _destinationService;
+        ICarService _carService;
+        public EventManager(IEventDal eventDal,ICountryService countryService,IDestinationService destinationService)
         {
             _eventDal = eventDal;
+            _countryService = countryService;
+            _destinationService = destinationService;
         }
-        public IResult Add(Event launch)
+        public IResult Add(EventDetail launch)
         {
-            _eventDal.Add(launch);
+            var ev = CreateEvent(launch);
+            _eventDal.Add(ev.Data);
             return new SuccessResult();
         }
 
@@ -75,6 +81,16 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+
+        private IDataResult<Event> CreateEvent(EventDetail eventDetail)
+        {
+            var country = _countryService.GetByCountryName(eventDetail.Country);
+            //var car = _carService.GetCarByModel(eventDetail.CarName);
+            var destination = _destinationService.GetByDestinationName(eventDetail.Destination);
+
+            return new SuccessDataResult<Event>(new Event {EventId=eventDetail.EventId,CarId=eventDetail.CarId,
+                CountryId=country.Data.CountryId,Date=eventDetail.Date,DestinationId=destination.Data.DestinationId,Rating=0 });
+        }
        
     }
 }

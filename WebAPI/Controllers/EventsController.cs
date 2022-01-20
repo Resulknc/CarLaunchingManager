@@ -113,7 +113,7 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost("add")]
-        public IActionResult Add(Event launch)
+        public IActionResult Add(EventDetail launch)
         {
             var result = _eventService.Add(launch);
             if (result.Success)
