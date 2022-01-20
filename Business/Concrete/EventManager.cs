@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,6 +22,9 @@ namespace Business.Concrete
             _countryService = countryService;
             _destinationService = destinationService;
         }
+
+        //[SecuredOperation("admin")]
+        //[ValidationAspect(typeof(EventValidator))]
         public IResult Add(EventDetail launch)
         {
             var ev = CreateEvent(launch);
